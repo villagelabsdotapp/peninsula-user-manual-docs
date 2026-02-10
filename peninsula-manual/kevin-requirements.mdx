@@ -1,0 +1,40 @@
+---
+title: "Kevin Requirements & Traceability"
+description: "Board-level concerns and how the Peninsula manual addresses each one."
+---
+
+## What Kevin and Erica Are Asking For
+
+From the provided email screenshots, the core asks are consistent:
+
+- Avoid black-box lock-in; require open integration and practical exit paths.
+- Prove exportability (especially usable CSV/JSON and lineage-preserving records).
+- Treat Peninsula as a knowledge layer over systems of record, not a replacement for core practice-management systems.
+- Use private AI with retrieval-grounded outputs, citations, and mandatory human review.
+- Define indexing policy clearly, including the question of retro-indexing vs phased indexing.
+- Clarify how confidentiality boundaries, permissions, and workflow segregation are enforced.
+- Show concrete workflow utility (drafting, diligence, analysis, cross-checking, CRM/ops support) without over-committing to custom modules.
+
+## Traceability Map
+
+| Concern | Manual Coverage | Implementation Signal |
+| --- | --- | --- |
+| Openness over black box | `standard-manual` Sections 2, 12 | Documented APIs/connectors, webhooks, export package definition |
+| Non-negotiables rubric | `standard-manual` Section 2.2 | Go/no-go scorecard during onboarding |
+| No custom core PM rebuild | `standard-manual` Sections 2.3, 15.2 | Custom modules explicitly phased and approved |
+| Private AI + RAG + review | `standard-manual` Sections 2.4, 9, 10, 11 | Citation-backed retrieval + human gate |
+| Indexing strategy clarity | `standard-manual` Section 8, `eblg-profile` Section 21 | Hybrid baseline + incremental + targeted backfill |
+| Confidentiality & permissions | `standard-manual` Section 11, `eblg-profile` Sections 18, 20 | ACL propagation, matter-level restrictions, audit trails |
+| Export and portability | `standard-manual` Section 12 | Tested export runbook and periodic portability drill |
+
+## Open Questions Still Requiring EBLG Decision
+
+- Exact confidentiality tiers and restricted matters/personas.
+- Final usefulness score thresholds and OCR trigger thresholds.
+- Initial source connectors authorized for production.
+- Definition of the board governance export package.
+- Which advanced workflow modules are phase 1 vs phase 2.
+
+## Practical Recommendation
+
+Use the manual as the baseline contract for architecture and controls, and treat custom modules as separately governed workstreams with explicit acceptance criteria.

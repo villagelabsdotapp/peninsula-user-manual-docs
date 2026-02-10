@@ -1,0 +1,527 @@
+---
+title: "Standard Manual"
+description: "Reusable Peninsula operating manual (core sections)."
+---
+
+# Peninsula User Manual
+
+Document type: Product and Operating Manual (Standard + Client Profile)  
+Version: v1.0  
+Date: February 10, 2026  
+Prepared for: Peninsula operators, client leadership, implementation teams  
+
+---
+
+## How to Use This Manual
+
+This manual is designed in two layers so it can be reused for multiple clients:
+
+1. Standard Peninsula Manual (Sections 1-16)  
+This is the reusable baseline for any client implementation.
+
+2. Client Implementation Profile - EBLG (Sections 17-25)  
+This is the client-specific configuration for Employee Benefits Law Group (EBLG).
+
+---
+
+## 1. Executive Summary
+
+Peninsula is a governed knowledge layer for legal and advisory workflows.  
+It is not a replacement for core practice-management systems.
+
+Peninsula delivers value by combining:
+
+- Controlled data ingestion from approved sources
+- A structured taxonomy and knowledge-card model
+- Indexing and retrieval systems built for citation-backed outputs
+- Agent workflows and LLM reasoning with human review controls
+
+This manual focuses on how to operate Peninsula safely, efficiently, and with measurable quality.
+
+---
+
+## 2. Strategic Principles
+
+These principles are implementation requirements, not optional guidance.
+
+### 2.1 Openness Over Black Box
+
+Every implementation must support:
+
+- Documented integration paths
+- Practical export capability (CSV/JSON and source-linked records)
+- Clear extensibility for future tools and models
+- A realistic exit and portability path
+
+### 2.2 Non-Negotiables Before Features
+
+Decisions are grounded in:
+
+- Integration readiness
+- Migration and export realism
+- Security and privacy boundaries
+- Reporting and auditability
+- Operational maintainability
+
+### 2.3 Knowledge Layer, Not Platform Replacement
+
+Peninsula should sit on top of stable systems-of-record where possible.  
+Custom work is focused on high-leverage knowledge workflows, not rebuilding CRM/billing/accounting cores.
+
+### 2.4 Private AI Pattern with Grounded Retrieval
+
+Core pattern:
+
+- Private tenant or firm boundary
+- Retrieval over approved internal and authoritative sources
+- Source citations in generated outputs
+- Mandatory human review gates for client-facing use
+
+### 2.5 Phased Capability Rollout
+
+Base platform is enabled first.  
+Custom modules and advanced automation are phased and validated based on measurable outcomes.
+
+---
+
+## 3. Platform Scope and Boundaries
+
+### 3.1 What Peninsula Does
+
+- Ingests approved data from source systems
+- Builds searchable and filterable knowledge structures
+- Supports agent workflows and LLM synthesis
+- Produces citation-grounded work product drafts
+- Logs access and actions for review
+
+### 3.2 What Peninsula Does Not Do by Default
+
+- Replace all core operational systems
+- Bypass confidentiality controls
+- Auto-publish legal advice without review
+- Guarantee perfect output without governance
+
+---
+
+## 4. Core Concepts and Terms
+
+### 4.1 Chart of Knowledge
+
+A governed taxonomy that defines how knowledge is categorized across document type, matter, topic, risk, and workflow context.
+
+### 4.2 Knowledge Card
+
+A record that represents one governed knowledge asset (document, transcript, template, memo, data table).  
+Each card stores source metadata, permissions, processing status, quality markers, and retrieval fields.
+
+### 4.3 Use/Hold/Exclude
+
+The first policy decision for any incoming data:
+
+- Use: approved and processable now
+- Hold: potentially useful but awaiting policy or quality decisions
+- Exclude: not allowed, not useful, or too risky for current scope
+
+### 4.4 Processing Depth
+
+- L0 Catalog: metadata and lineage only
+- L1 Parse: text extraction and basic indexing
+- L2 Selective OCR: OCR only where text coverage is poor
+- L3 Enrichment: advanced extraction, relation mapping, and workflow-level tagging
+
+---
+
+## 5. Data Pool Model
+
+### 5.1 Typical Source Categories
+
+- DMS and matter repositories
+- Email archives and matter-linked correspondence
+- Shared drives and OneDrive folders
+- Meeting transcripts and expert interviews
+- Structured system exports (CSV/JSON)
+- External authoritative references (laws, regs, case law)
+
+### 5.2 Expected File Types
+
+- PDF, DOCX, XLSX, PPTX, TXT
+- MSG, EML, PST extracts
+- CSV, JSON
+- Audio/video transcript text outputs
+- Scanned documents requiring OCR
+
+### 5.3 Data Utility Dimensions
+
+Each asset is evaluated against:
+
+- Legal/workflow relevance
+- Citation value
+- Reuse potential
+- Confidentiality fit
+- Processing cost
+- Data quality and readability
+
+---
+
+## 6. Taste System (Usefulness Triage) - Initial Setup
+
+This section defines the initial configuration for efficient data processing.
+
+### 6.1 First Principles
+
+For each asset, ask:
+
+1. Should we use this data at all?
+2. If yes, how deeply should we process it?
+3. How will we verify it improves retrieval and output quality?
+
+### 6.2 Hard Gates (Must Pass)
+
+- Permission gate: source ACLs and scope policy pass
+- Policy gate: allowed content class
+- Integrity gate: file is readable and traceable
+- Duplication gate: not redundant with existing high-quality representation
+
+### 6.3 Usefulness Score (0-100)
+
+Suggested baseline weighting:
+
+- Matter/workflow relevance: 0-30
+- Document type priority: 0-20
+- Citation value: 0-15
+- Uniqueness: 0-15
+- Recency or active-matter tie: 0-10
+- Processing-cost penalty: 0 to -10
+
+Routing:
+
+- 70-100: full processing path
+- 40-69: standard parse path
+- 0-39: catalog only or hold
+
+### 6.4 Processing Depth Rules
+
+- Route to L0 if low value or policy-limited
+- Route to L1 for native text docs
+- Route to L2 only when text extraction quality is low
+- Promote to L3 for high-value evergreen assets and workflow-critical templates
+
+### 6.5 OCR Policy (Efficiency-Oriented)
+
+OCR is not default.
+
+Run OCR when:
+
+- Native extraction fails quality checks
+- Page-level text coverage is below threshold
+- Retrieval tests show missing key sections due to poor extraction
+
+Prefer page-level selective OCR over full-document OCR.
+
+---
+
+## 7. Ingestion and Processing Phases
+
+### Phase 0: Governance Configuration
+
+- Confirm scope boundaries and excluded zones
+- Confirm data ownership, retention, and review policy
+- Approve taxonomy starter and knowledge-card schema
+
+Output: signed ingestion policy and control matrix
+
+### Phase 1: Discovery and Inventory
+
+- Connect source systems and pull sample manifests
+- Measure file counts, sizes, types, and quality signals
+- Identify high-value and high-risk clusters
+
+Output: source inventory report and pilot candidate set
+
+### Phase 2: Controlled Landing
+
+- Land approved data in raw zone
+- Preserve immutable source copy and hashes
+- Capture source lineage and ACL snapshots
+
+Output: controlled raw data lake with traceability
+
+### Phase 3: Normalization and Parsing
+
+- Parse text and extract metadata
+- Apply selective OCR policy
+- Build canonical document representations
+
+Output: curated content objects with quality markers
+
+### Phase 4: Taxonomy and Knowledge Cards
+
+- Attach chart-of-knowledge tags
+- Create or update knowledge cards
+- Validate consistency of naming and categories
+
+Output: searchable, governed knowledge-card layer
+
+### Phase 5: Index Build
+
+- Chunk by semantic/legal boundaries
+- Build lexical + vector retrieval indexes
+- Attach permission filters and citation pointers
+
+Output: retrieval-ready index layer
+
+### Phase 6: Retrieval Validation
+
+- Run benchmark question sets
+- Measure recall, precision, citation correctness
+- Tune ranking, chunking, and metadata filters
+
+Output: validated retrieval profile
+
+### Phase 7: Agent Workflow Enablement
+
+- Configure workflow prompts and tools
+- Define output templates and review gates
+- Enable confidence signaling and escalation paths
+
+Output: production workflow pack
+
+### Phase 8: Continuous Improvement
+
+- Monitor usage and quality metrics
+- Re-index targeted areas based on misses
+- Expand scope only with governance approval
+
+Output: stable, evolving knowledge system
+
+---
+
+## 8. Indexing Strategy and Mechanics
+
+### 8.1 Why Indexing Exists
+
+LLMs reason well but do not natively maintain complete, governed memory of a firm's historical corpus.  
+Indexing is the controlled memory map that lets retrieval find evidence quickly and safely.
+
+### 8.2 Recommended Strategy
+
+Use a phased hybrid strategy:
+
+- Baseline indexing of approved high-value historical corpus
+- Automatic incremental indexing for new content
+- Targeted backfill based on retrieval gaps
+
+This avoids two failure modes:
+
+- Over-processing everything upfront
+- Under-indexing by only indexing forward with no historical baseline
+
+### 8.3 Index Components
+
+- Lexical index for exact and near-exact matching
+- Vector index for semantic retrieval
+- Metadata filters for matter, type, date, confidentiality, jurisdiction
+- ACL-aware filtering before retrieval
+- Reranking stage for final evidence selection
+
+### 8.4 Chunking Guidance
+
+Chunk on legal/semantic boundaries where possible:
+
+- Sections, headings, clauses, table blocks
+- Preserve references to page, section, and source document
+- Avoid chunks too large for context windows or too small for meaning
+
+---
+
+## 9. Retrieval and Search-to-Answer Pipeline
+
+### 9.1 Request Flow
+
+1. User/agent issues task
+2. Authorization filters enforce access
+3. Hybrid retrieval gathers candidate evidence
+4. Reranker selects strongest evidence
+5. LLM synthesizes response from retrieved evidence
+6. Output includes citations and confidence cues
+7. Human review gate applies where required
+
+### 9.2 Retrieval Quality Requirements
+
+- Citation coverage on substantive claims
+- Source-link integrity
+- Minimal irrelevant context
+- No access boundary violations
+
+### 9.3 Confidence and Escalation
+
+- High confidence: proceed with standard review
+- Medium confidence: additional validation pass
+- Low confidence: senior review required
+
+---
+
+## 10. Agents and LLM Roles
+
+### 10.1 Distinct Roles
+
+- Index/retrieval system: evidence location and ranking
+- LLM: synthesis, drafting, explanation
+- Agents: multi-step workflow execution and coordination
+
+### 10.2 Multi-LLM Policy
+
+When multiple models are enabled:
+
+- Retrieval evidence set remains constant
+- Comparative synthesis can be run for quality checks
+- Final output must preserve citation integrity and review controls
+
+### 10.3 Human in the Loop
+
+Client-facing legal output is reviewed by qualified humans before release.
+
+---
+
+## 11. Security, Privacy, and Compliance Controls
+
+### 11.1 Data Classes
+
+- Public/Internal
+- Confidential matter
+- Restricted/admin
+- Highly sensitive
+
+### 11.2 Access Model
+
+- Role-based access control
+- Matter-level and document-level filters
+- Explicit deny lists for restricted zones
+
+### 11.3 Audit and Observability
+
+- Query logging
+- Source access logging
+- Workflow action logging
+- Exception and escalation logging
+
+### 11.4 Encryption and Infrastructure
+
+- Encryption at rest and in transit
+- Controlled tenancy and key management practices
+- Backup and recovery procedures
+
+---
+
+## 12. Integration, Export, and Portability
+
+### 12.1 Integration Expectations
+
+- Documented API and connector behavior
+- Event/webhook pathways where relevant
+- Clear mapping from source records to knowledge cards
+
+### 12.2 Export Requirements
+
+- Usable exports (CSV/JSON and linked references)
+- Metadata and lineage exportability
+- Retrieval/audit logs available for governance review
+
+### 12.3 Exit Readiness
+
+- Practical procedure for data extraction
+- Minimal dependency lock where feasible
+- Transition package documentation
+
+---
+
+## 13. Operations and Governance
+
+### 13.1 Core Roles
+
+- Executive sponsor
+- Knowledge owner
+- Platform admin
+- Security/compliance reviewer
+- Workflow owner
+
+### 13.2 Decision Cadence
+
+- Weekly quality review
+- Monthly scope and taxonomy review
+- Quarterly risk and portability review
+
+### 13.3 Change Management
+
+- Versioned policy updates
+- Controlled rollout by workflow
+- Documented rollback procedures
+
+---
+
+## 14. Quality Metrics and Service Targets
+
+Recommended baseline metrics:
+
+- Retrieval precision and recall on benchmark sets
+- Citation correctness rate
+- Hallucination incident rate
+- Access-control violation rate
+- Time-to-first-draft by workflow
+- Reuse rate of generated outputs
+
+Target values should be set per client profile.
+
+---
+
+## 15. Implementation Playbook (Standard)
+
+### 15.1 30-60-90 Plan
+
+First 30 days:
+
+- Governance and scope lock
+- Inventory and pilot ingestion
+- Taxonomy starter and knowledge-card setup
+
+Days 31-60:
+
+- Index build and retrieval tuning
+- Workflow pilot with review gates
+- Baseline metrics and remediation plan
+
+Days 61-90:
+
+- Controlled expansion of scope
+- Additional workflows
+- Operational handoff and governance rhythm
+
+### 15.2 Phased Modules
+
+Module enablement should be explicitly phased:
+
+- Base platform first
+- Advanced modules by validated business value
+- Each module includes acceptance criteria and rollback path
+
+---
+
+## 16. Client Profile Template (Reusable)
+
+Use this section as the template for any client:
+
+1. Client goals and constraints  
+2. In-scope and out-of-scope data  
+3. Confidentiality and access model  
+4. Taxonomy profile and knowledge-card schema adjustments  
+5. Workflow priorities and success criteria  
+6. Indexing profile and OCR rules  
+7. Review and escalation policy  
+8. Integration and export requirements  
+9. Open decisions and owners  
+10. Implementation timeline and checkpoints  
+
+---
+
+# Client Implementation Profile: EBLG
+

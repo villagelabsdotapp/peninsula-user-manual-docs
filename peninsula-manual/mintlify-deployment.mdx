@@ -1,0 +1,76 @@
+---
+title: "Mintlify Deployment & Repository Wiring"
+description: "How the Peninsula manual is hosted, updated, and transitioned from personal to Village Labs organization ownership."
+---
+
+## Current State
+
+- Live docs domain: `https://villagelabs-22b6513e.mintlify.app`
+- Hosted MCP endpoint: `https://villagelabs-22b6513e.mintlify.app/mcp`
+- Mintlify dashboard currently linked to GitHub repo `cawdette/docs` (branch `main`)
+
+## Publishing Model
+
+Mintlify deploys from the configured Git repository:
+
+1. Content changes committed to linked repo branch.
+2. Mintlify triggers build/deploy.
+3. Site updates appear on your Mintlify domain.
+
+This means your docs source-of-truth should live in the linked repo unless/until Git settings are switched.
+
+## Repository Strategy for Village Labs
+
+Recommended steady-state:
+
+- Target org-owned repository: `villagelabsdotapp/<docs-repo>`
+- Keep `cawdette/docs` only as temporary bridge if needed
+- Point Mintlify Git settings to the org repo once access is available in dashboard
+
+Migration sequence:
+
+1. Mirror final docs content from `cawdette/docs` to the Village Labs org repo.
+2. Ensure `docs.json` exists at repo root (or enable monorepo path mode).
+3. In Mintlify Git settings, connect/select Village Labs org + repo.
+4. Trigger a test deploy and validate URLs/content.
+5. Freeze or archive personal-repo deployment path.
+
+## MCP Integration Notes
+
+Mintlify-hosted MCP gives AI clients retrieval access to your docs corpus.
+
+- Endpoint format: `https://<subdomain>.mintlify.app/mcp`
+- Tool availability depends on docs content indexed by Mintlify.
+- In local clients, `mint-mcp` CLI can register Mintlify docs for supported editors.
+
+## API-Driven Refresh (Optional)
+
+Mintlify API supports project update jobs (per Mintlify API docs):
+
+- `POST /v1/project/update/{project_id}`
+- `GET /v1/project/update-status/{job_id}`
+
+Use this when you need explicit deployment orchestration from CI/CD.
+
+Repository scripts:
+
+- `scripts/mintlify-trigger-update.sh`
+- `scripts/mintlify-check-update.sh <job-id>`
+
+Both scripts read credentials from environment variables:
+
+- `MINTLIFY_PROJECT_ID`
+- `MINTLIFY_ADMIN_API_KEY`
+
+## Security & Key Handling
+
+- Store API keys in CI/CD secret manager, never in repo.
+- Rotate keys after setup and after any accidental exposure.
+- Prefer least-privilege key use by workflow.
+
+## Operational Checklist
+
+- Docs repo branch protection enabled.
+- Review + approval path for manual changes.
+- Release notes on material manual updates.
+- Quarterly portability drill (export package validation).

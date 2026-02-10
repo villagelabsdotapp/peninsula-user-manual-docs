@@ -1,68 +1,43 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Peninsula User Manual",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#29371F",
+    "light": "#4A5A3D",
+    "dark": "#6B8456"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Manual",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Start",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "peninsula-manual/index"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Core",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "peninsula-manual/standard-manual",
+              "peninsula-manual/data-indexing-primer"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "EBLG",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "peninsula-manual/eblg-profile",
+              "peninsula-manual/kevin-requirements"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Operations",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "peninsula-manual/mintlify-deployment"
             ]
           }
         ]
@@ -71,14 +46,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Village Labs",
+          "href": "https://www.villagelabs.com",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Peninsula",
+          "href": "https://www.villagelabs.com/peninsula",
+          "icon": "book-open-cover"
         }
       ]
     }
@@ -91,32 +66,31 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:roger@villagelabs.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Village Labs",
+      "href": "https://www.villagelabs.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/villagelabsdotapp",
+      "linkedin": "https://www.linkedin.com/company/village-labs"
     }
   }
 }

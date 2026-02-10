@@ -1,0 +1,110 @@
+---
+title: "Data Pool & Indexing Primer"
+description: "First-principles explanation of what data we ingest, how we process it selectively, and why indexing drives retrieval quality."
+---
+
+## 1) Data Pool: What We Expect from EBLG
+
+Likely source systems and stores:
+
+- DMS and matter repositories
+- Email archives and matter correspondence
+- Shared drives and OneDrive folders
+- Meeting transcripts and call notes
+- Structured exports from CRM/accounting/workflow systems
+- External legal reference sources (where licensed/approved)
+
+Common file types:
+
+- Documents: `PDF`, `DOCX`, `TXT`
+- Spreadsheets: `XLSX`, `CSV`
+- Email: `MSG`, `EML`, mailbox exports
+- Structured data: `JSON`, `CSV`
+- Scans/images needing OCR (only when warranted)
+
+## 2) First-Principles Filter: Use / Hold / Exclude
+
+For each incoming asset, we decide:
+
+1. Should this data be included at all?
+2. If included, how deeply should it be processed?
+3. What retrieval value do we expect from processing it?
+
+Base filter dimensions:
+
+- Relevance to real EBLG workflows
+- Citation value and source reliability
+- Confidentiality fit and permission enforceability
+- Processing cost vs expected utility
+- Redundancy (duplicate or superseded content)
+
+## 3) Selective Processing Logic (Efficiency)
+
+Default policy is not maximum processing. Default policy is sufficient processing.
+
+- `L0 Catalog`: metadata only for inventory and lineage
+- `L1 Parse`: standard text extraction and structural metadata
+- `L2 Selective OCR`: OCR only when extraction quality is poor and file value is high
+- `L3 Enrichment`: entity/relation/workflow tagging for high-value corpus
+
+OCR policy:
+
+- Do not OCR all PDFs by default.
+- OCR when extraction confidence or usable text coverage falls below threshold.
+- Prefer page-level OCR over full-document OCR.
+- Prioritize OCR budget on high-query, high-value assets.
+
+## 4) Index Data Question: What It Means
+
+"Index data" means creating retrieval structures that make future queries fast, relevant, and source-grounded.
+
+Peninsula uses a hybrid approach:
+
+- Lexical index: exact and near-exact keyword match
+- Vector index: semantic similarity and concept-level retrieval
+- Metadata index: filters such as matter, client, date, confidentiality tier, document type
+
+Why hybrid indexing:
+
+- Lexical catches exact legal terms/citations.
+- Vector catches conceptually similar language.
+- Metadata enforces policy and narrows noise.
+
+## 5) Phased Indexing Strategy
+
+Recommended rollout:
+
+- Baseline index high-value historical corpus first.
+- Turn on forward incremental indexing for new content.
+- Backfill older/long-tail data only when retrieval analytics justify it.
+
+Why this beats "index everything now":
+
+- Lower initial cost and faster time-to-value.
+- Better control over confidentiality and quality.
+- Decisions guided by observed query misses instead of assumptions.
+
+## 6) Search -> Retrieval -> Agent Workflow
+
+Request flow:
+
+1. User asks question or launches a workflow.
+2. Retriever applies ACL + metadata filters.
+3. Hybrid retrieval returns candidate chunks/cards.
+4. Ranker assembles citation-backed context.
+5. LLM/agent produces draft output with references.
+6. Human review gate approves, edits, or rejects.
+
+## 7) What We Can Do with the Data
+
+Once indexed and governed, Peninsula can support:
+
+- Faster drafting of memos, diligence summaries, and transaction analyses
+- Cross-matter pattern detection and precedent reuse
+- Source-cited Q&A over internal corpus
+- Structured exports and reporting for governance and board oversight
+- Agent-assisted workflows with explicit human checkpoints
+
+## 8) Simple Decision Rule
+
+Process deeper only when expected retrieval quality or workflow leverage justifies it, while preserving security, auditability, and portability.

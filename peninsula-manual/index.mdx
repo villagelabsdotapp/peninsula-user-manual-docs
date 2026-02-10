@@ -1,0 +1,38 @@
+---
+title: "Peninsula User Manual"
+description: "Operational guide for Peninsula with a reusable standard model and an EBLG-specific implementation profile."
+---
+
+## Purpose
+
+This documentation package is structured in two layers:
+
+1. A reusable Peninsula operating manual for any client implementation.
+2. An EBLG-specific profile that captures scope, controls, and decisions.
+
+It reflects the key board-level concerns raised by Kevin Long and Erica: openness, exportability, integration readiness, privacy boundaries, and practical phased rollout.
+
+<CardGroup cols={2}>
+  <Card title="Standard Manual" icon="book" href="/peninsula-manual/standard-manual">
+    Core platform principles, data model, ingestion/indexing mechanics, retrieval, agents, governance, and implementation playbook.
+  </Card>
+  <Card title="EBLG Profile" icon="building" href="/peninsula-manual/eblg-profile">
+    Client-specific scope, indexing policy, workflow pack, open decisions, and board-facing FAQs.
+  </Card>
+  <Card title="Kevin Requirements" icon="clipboard-check" href="/peninsula-manual/kevin-requirements">
+    Requirement traceability matrix from Kevin's email asks to manual coverage and implementation controls.
+  </Card>
+  <Card title="Data & Indexing Primer" icon="database" href="/peninsula-manual/data-indexing-primer">
+    First-principles explanation of data intake, selective processing, indexing, and retrieval for agents + LLM workflows.
+  </Card>
+</CardGroup>
+
+## How to Use This Docs Set
+
+- Leadership and board review: start with `Kevin Requirements` and `EBLG Profile`.
+- Implementation team: start with `Data & Indexing Primer`, then `Standard Manual`.
+- Operations and handoff: use `Mintlify Deployment` for publishing and maintenance workflows.
+
+<Card title="Mintlify Deployment & Repo Wiring" icon="rocket" href="/peninsula-manual/mintlify-deployment">
+  Publishing model, MCP integration notes, GitHub repository strategy, and Village Labs organization handoff.
+</Card>
